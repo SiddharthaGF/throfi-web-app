@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, Head } from '@inertiajs/inertia-react';
+import route from 'ziggy-js';
 
-export default function Welcome(props) {
+export default function Welcome(props: { auth: { user: any; }; laravelVersion: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; phpVersion: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; }) {
     return (
         <>
             <Head title="Welcome" />

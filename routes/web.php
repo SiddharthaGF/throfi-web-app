@@ -22,7 +22,7 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -32,4 +32,4 @@ require __DIR__.'/auth.php';
 
 Route::get('/home', function () {
     return Inertia::render("Home");
-});
+})->name('home');

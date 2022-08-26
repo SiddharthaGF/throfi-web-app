@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, Head } from '@inertiajs/inertia-react';
+import route from 'ziggy-js';
 
-export default function Welcome(props) {
+
+export default function Welcome() {
     return (
         <>
-            <h1 className="text-3xl">
-                Hello world!
-            </h1>
+           <a href={route('welcome')}>clic me!</a>
         </>
     )}
