@@ -1,11 +1,17 @@
-import React from 'react';
-import { Link, Head } from '@inertiajs/inertia-react';
-import route from 'ziggy-js';
+import React from "react";
+import route from "ziggy-js";
 
+export default function App() {
 
-export default function Welcome() {
-    return (
-        <>
-           <a href={route('welcome')}>clic me!</a>
-        </>
-    )}
+  const Escribir = () => {
+    console.log(route('settings'));
+  }
+
+  return (
+    <>
+        <button className="btn btn-blue" onClick={Escribir}>
+            Clic me!
+        </button>
+    </>
+  );
+}

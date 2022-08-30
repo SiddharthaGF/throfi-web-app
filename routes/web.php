@@ -33,3 +33,7 @@ require __DIR__.'/auth.php';
 Route::get('/home', function () {
     return Inertia::render("Home");
 })->name('home');
+
+Route::get('/profile/settings', function () {
+    return Inertia::render("Settings");
+})->name('settings');
