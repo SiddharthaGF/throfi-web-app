@@ -30,10 +30,12 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/home', function () {
-    return Inertia::render("Home");
+Route::get('/home/page={number}', function (int $page) {
+    return Inertia::render("Home", [
+        'page' => $page,
+    ]);
 })->name('home');
 
-Route::get('/profile/settings', function () {
-    return Inertia::render("Settings");
-})->name('settings');
+Route::get('/import-cvs', function () {
+    return view('welcome');
+});

@@ -3,11 +3,63 @@
 @tailwind utilities;
 
 .btn {
-    @apply font-bold py-2 px-4 rounded;
-  }
-  .btn-blue {
-    @apply bg-java text-white;
-  }
-  .btn-blue:hover {
-    @apply bg-medium-turquoise;
-  }
+  @apply font-bold py-2 px-4 rounded;
+}
+
+.btn-blue {
+  @apply bg-java text-white;
+}
+
+.
+
+.btn-blue:hover {
+  @apply bg-medium-turquoise;
+}
+
+table {
+  @apply w-full text-sm text-left
+}
+
+thead {
+  @apply text-xs;
+}
+
+.rh-3 {
+  @apply py-3 px-6 font-medium;
+}
+
+.rh-4 {
+  @apply py-4 px-6 font-medium;
+}
+
+.r-border {
+  @apply border-b;
+}
+
+.tr {
+  @apply bg-white border-b;
+}
+
+.table-hover-state {
+  @apply text-gray-500 dark:text-gray-400;
+}
+
+.thead-hover-state {
+  @apply text-gray-700 uppercase  bg-gray-50 dark:bg-gray-700 dark:text-gray-400;
+}
+
+.r-hover-state {
+  @apply dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600;
+}
+
+.h-hover-state {
+  @apply text-gray-900 whitespace-nowrap dark:text-white;
+}
+
+.row {
+  @apply font-medium text-gray-900 whitespace-nowrap dark:text-white;
+}
+
+.r-link {
+  @apply font-medium text-blue-600 dark:text-blue-500 hover:underline;
+}

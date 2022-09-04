@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Patient;
+use App\Http\Resources\PatientResource;
 use Illuminate\Http\Request;
+use App\Models\Patient;
 
 class PatientController extends Controller
 {
@@ -13,10 +14,19 @@ class PatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $patients = Patient::all();
-        return $patients;
+        return PatientResource::collection(
+            Patient::select([
+                'id',
+                'name',
+                'last_name',
+                'birthdate',
+                'city',
+                'profile_photo',
+            ])->name($request->name)
+                ->Paginate(25)
+        );
     }
 
     /**
@@ -48,6 +58,7 @@ class PatientController extends Controller
     public function show($id)
     {
         $patient = Patient::find($id);
+
         return $patient;
     }
 
@@ -60,7 +71,7 @@ class PatientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $patient = Patient::findOrFail($id);
+        $patient = Patient::findOrFail($request->id);
         $patient->name = $request->name;
         $patient->last_name = $request->last_name;
         $patient->ocupation = $request->ocupation;

@@ -19,16 +19,18 @@ class PatientFactory extends Factory
 
     public function definition()
     {
-        $by = 'Bypass Gastrico';
+        $faker = \Faker\Factory::create();
+        $faker->addProvider(new \Smknstd\FakerPicsumImages\FakerPicsumImagesProvider($faker));        
+
         return [
-            'name' => fake()->name(),
+            'name' => fake()->firstName(),
             'last_name' => fake()->lastName(),
             'ocupation' => fake()->jobTitle(),
-            'birthdate' => fake()->dateTimeBetween('1960-01-01', '2000-12-31')
-            ->format('Y-m-d'),
+            'birthdate' => fake()->dateTimeBetween('1960-01-01', '2000-12-31')->format('Y-m-d'),
             'city' => fake()->city(),
             'nutritional_diagnosis' => fake()->sentence(),
-            'type_of_surgery' => fake()->optional(0.1, 'Bypass Gastrico')->randomElement(null),
+            'type_of_surgery' => fake()->optional(0.9, 'Bypass Gastrico')->randomElement(null),
+            'profile_photo' => $faker->imageUrl(150,150),
         ];
     }
 }
