@@ -9,7 +9,7 @@
     <body>
         <h1>Importar datos</h1>
 
-        <form action="{{ route('province.import.excel') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('state.import.excel') }}" method="post" enctype="multipart/form-data">
             @csrf
             
             @if(Session::has('message'))
@@ -23,7 +23,7 @@
 
         <h1>Importar datos ciudades</h1>
 
-        <form action="{{ route('city.import') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('district.import') }}" method="post" enctype="multipart/form-data">
             @csrf
             
             @if(Session::has('message'))
@@ -37,7 +37,7 @@
 
         <h1>Importar datos parroquias</h1>
 
-        <form action="{{ route('parish.import') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('zone.import') }}" method="post" enctype="multipart/form-data">
             @csrf
             
             @if(Session::has('message'))

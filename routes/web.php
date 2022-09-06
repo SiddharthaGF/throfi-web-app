@@ -36,6 +36,6 @@ Route::get('/home/page={number}', function (int $page) {
     ]);
 })->name('home');
 
-Route::get('/import-cvs', function () {
+Route::get('/import', function () {
     return view('welcome');
 });

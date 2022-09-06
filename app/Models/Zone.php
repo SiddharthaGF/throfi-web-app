@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Province extends Model
+class Zone extends Model
 {
     use HasFactory;
 
@@ -15,8 +15,14 @@ class Province extends Model
     ];
     protected $keyType = 'string';
 
-    protected $fillable = ['code', 'name'];
-
+    protected $fillable = ['code_district', 'name', 'code_zone'];
     protected $hidden = ['created_at', 'updated_at'];
+
+    public function scopeCodeDistrict($query, $code)
+    {
+        if ($code)
+            return $query->select('code_zone', 'name')->where('code_district', "=", "$code");
+    }
+
 
 }

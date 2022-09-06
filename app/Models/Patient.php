@@ -14,7 +14,7 @@ class Patient extends Model
         'last_name', 
         'ocupation', 
         'birthdate', 
-        'city', 
+        'district', 
         'nutritional_diagnosis', 
         'type_of_surgery',
     ];

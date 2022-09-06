@@ -2,10 +2,10 @@
 
 namespace App\Imports;
 
-use App\Models\Province;
+use App\Models\Zone;
 use Maatwebsite\Excel\Concerns\ToModel;
 
-class ProvinceImport implements ToModel
+class ZoneImport implements ToModel
 {
     /**
     * @param array $row
@@ -14,9 +14,10 @@ class ProvinceImport implements ToModel
     */
     public function model(array $row)
     {
-        return new Province([
-            'code' => $row[0],
-            'name' => $row[1],
+        return new Zone([
+            'code_district' => $row[0],
+            'code_zone' => $row[1],
+            'name' => $row[2]
         ]);
     }
 }

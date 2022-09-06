@@ -22,7 +22,7 @@ class PatientController extends Controller
                 'name',
                 'last_name',
                 'birthdate',
-                'city',
+                'district',
                 'profile_photo',
             ])->name($request->name)
                 ->Paginate(25)
@@ -42,7 +42,7 @@ class PatientController extends Controller
         $patient->last_name = $request->last_name;
         $patient->ocupation = $request->ocupation;
         $patient->birthdate = $request->birthdate;
-        $patient->city = $request->city;
+        $patient->district = $request->district;
         $patient->nutritional_diagnosis = $request->nutritional_diagnosis;
         $patient->type_of_surgery = $request->type_of_surgery;
         $patient->save();
@@ -58,7 +58,6 @@ class PatientController extends Controller
     public function show($id)
     {
         $patient = Patient::find($id);
-
         return $patient;
     }
 
@@ -76,7 +75,7 @@ class PatientController extends Controller
         $patient->last_name = $request->last_name;
         $patient->ocupation = $request->ocupation;
         $patient->birthdate = $request->birthdate;
-        $patient->city = $request->city;
+        $patient->district = $request->district;
         $patient->nutritional_diagnosis = $request->nutritional_diagnosis;
         $patient->type_of_surgery = $request->type_of_surgery;
         $patient->save();

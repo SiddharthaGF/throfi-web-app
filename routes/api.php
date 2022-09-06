@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Api\v1\DPA\CityController;
-use App\Http\Controllers\Api\v1\DPA\ParishController;
-use App\Http\Controllers\Api\v1\DPA\ProvinceController;
+use App\Http\Controllers\Api\v1\DPA\DistrictController;
+use App\Http\Controllers\Api\v1\DPA\ZoneController;
+use App\Http\Controllers\Api\v1\DPA\StateController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\PatientController;
@@ -30,17 +30,19 @@ Route::controller(PatientController::class)->group(function() {
     Route::delete('/v1/patient/{id}', 'destroy')->name(('patient.destroy'));
 });
 
-Route::controller(ProvinceController::class)->group(function() {
-    Route::get('v1/province', 'index')->name('province.index');
-    Route::post('/import', 'importExcel')->name('province.import.excel');
+Route::controller(StateController::class)->group(function() {
+    Route::get('v1/state', 'index')->name('state.index');
+    Route::post('/import', 'importExcel')->name('state.import.excel');
 });
 
-Route::controller(CityController::class)->group(function() {
-    Route::get('v1/city', 'index')->name('city.index');
-    Route::post('/v1/city/import', 'import')->name('city.import');
+Route::controller(DistrictController::class)->group(function() {
+    Route::get('v1/district', 'index')->name('district.index');
+    Route::get('v1/district/{id}', 'show')->name('district.show');
+    Route::post('/v1/district/import', 'import')->name('district.import');
 });
 
-Route::controller(ParishController::class)->group(function() {
-    Route::get('v1/parish', 'index')->name('parish.index');
-    Route::post('/v1/parish/import', 'import')->name('parish.import');
+Route::controller(ZoneController::class)->group(function() {
+    Route::get('v1/zone', 'index')->name('zone.index');
+    Route::get('v1/{zone}', 'index')->name('zone.index');
+    Route::post('/v1/zone/import', 'import')->name('zone.import');
 });

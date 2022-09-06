@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api\v1\DPA;
 
-use App\Imports\ProvinceImport;
+use App\Imports\StateImport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
-use App\Models\Province;
+use App\Models\State;
 
-class ProvinceController extends Controller
+class StateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,13 +17,13 @@ class ProvinceController extends Controller
      */
     public function index()
     {
-        return Province::Paginate();
+        return State::Paginate();
     }
 
     public function importExcel(Request $request) 
     {
         $file = $request->file('file');
-        Excel::import(new ProvinceImport, $file);
+        Excel::import(new StateImport, $file);
         return back()->with('message', 'Importacion correcta');
     }
 }

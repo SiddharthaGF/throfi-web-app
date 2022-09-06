@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers\Api\v1\DPA;
 
-use App\Http\Controllers\Controller;
-use App\Imports\ParishImport;
-use App\Models\Parish;
+use App\Models\District;
+use App\Imports\DistrictImport;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\DistrictResource;
 use Maatwebsite\Excel\Facades\Excel;
 
-class ParishController extends Controller
+class DistrictController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Parish::Paginate();
+        return DistrictResource::collection(District::Paginate(25));
     }
 
     /**
@@ -44,21 +45,21 @@ class ParishController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Parish  $parish
+     * @param  \App\Models\District  $district
      * @return \Illuminate\Http\Response
      */
-    public function show(Parish $parish)
+    public function show($id)
     {
-        //
+        return District::find($id)->get();
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Parish  $parish
+     * @param  \App\Models\District  $district
      * @return \Illuminate\Http\Response
      */
-    public function edit(Parish $parish)
+    public function edit(District $district)
     {
         //
     }
@@ -67,10 +68,10 @@ class ParishController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Parish  $parish
+     * @param  \App\Models\District  $district
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Parish $parish)
+    public function update(Request $request, District $district)
     {
         //
     }
@@ -78,25 +79,18 @@ class ParishController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Parish  $parish
+     * @param  \App\Models\District  $district
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Parish $parish)
+    public function destroy(District $district)
     {
         //
     }
 
-    /**
-     * Import the specified resource from storage.
-     *
-     * @param  \App\Models\Parish  $parish
-     * @return \Illuminate\Http\Response
-     */
     public function import(Request $request)
     {
         $file = $request->file('file');
-        Excel::import(new ParishImport, $file);
+        Excel::import(new DistrictImport, $file);
         return back()->with('message', 'Importacion correcta');
     }
-
 }

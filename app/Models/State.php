@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Parish extends Model
+class State extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,8 @@ class Parish extends Model
     ];
     protected $keyType = 'string';
 
-    protected $fillable = ['code_city', 'name', 'code_parish'];
+    protected $fillable = ['code', 'name'];
+
     protected $hidden = ['created_at', 'updated_at'];
 
 }

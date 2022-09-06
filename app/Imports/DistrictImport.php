@@ -2,10 +2,10 @@
 
 namespace App\Imports;
 
-use App\Models\Parish;
+use App\Models\District;
 use Maatwebsite\Excel\Concerns\ToModel;
 
-class ParishImport implements ToModel
+class DistrictImport implements ToModel
 {
     /**
     * @param array $row
@@ -14,9 +14,9 @@ class ParishImport implements ToModel
     */
     public function model(array $row)
     {
-        return new Parish([
-            'code_city' => $row[0],
-            'code_parish' => $row[1],
+        return new District([            
+            'code_state' => $row[0],
+            'code_district' => $row[1],
             'name' => $row[2]
         ]);
     }

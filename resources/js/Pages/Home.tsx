@@ -6,7 +6,7 @@ interface Patient {
   id: number;
   name: string;
   last_name: string;
-  city: string;
+  district: string;
   birthdate: Date;
   ocupation: string;
   nutritional_diagnosis: string;
@@ -76,7 +76,7 @@ function Home(p: props) {
             {patients.map((patient) => (
               <tr className='tr r-hover-state r-border' key={patient.id}>
                 <th scope='row' className='rh-4 row'>{patient.name} {patient.last_name}</th>
-                <td className='rh-4'>{patient.city}</td>
+                <td className='rh-4'>{patient.district}</td>
                 <td className='rh-4'>{calculateAge(new Date(patient.birthdate))}</td>
                 <td className='rh-4'>{patient.ocupation}</td>
                 <td className='rh-4'>{patient.nutritional_diagnosis}</td>

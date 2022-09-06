@@ -3,21 +3,24 @@
 namespace App\Http\Controllers\Api\v1\DPA;
 
 use App\Http\Controllers\Controller;
-use App\Imports\CityImport;
-use App\Models\City;
+use App\Http\Resources\ZoneResource;
+use App\Imports\ZoneImport;
+use App\Models\Zone;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
-class CityController extends Controller
+class ZoneController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $requests)
     {
-        return City::Paginate();
+        return ZoneResource::collection(
+            Zone::CodeDistrict($requests->code_district)->get()
+        );
     }
 
     /**
@@ -44,10 +47,10 @@ class CityController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\City  $city
+     * @param  \App\Models\Zone  $zone
      * @return \Illuminate\Http\Response
      */
-    public function show(City $city)
+    public function show(Zone $zone)
     {
         //
     }
@@ -55,10 +58,10 @@ class CityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\City  $city
+     * @param  \App\Models\Zone  $zone
      * @return \Illuminate\Http\Response
      */
-    public function edit(City $city)
+    public function edit(Zone $zone)
     {
         //
     }
@@ -67,10 +70,10 @@ class CityController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\City  $city
+     * @param  \App\Models\Zone  $zone
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, City $city)
+    public function update(Request $request, Zone $zone)
     {
         //
     }
@@ -78,18 +81,23 @@ class CityController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\City  $city
+     * @param  \App\Models\Zone  $zone
      * @return \Illuminate\Http\Response
      */
-    public function destroy(City $city)
+    public function destroy(Zone $zone)
     {
         //
     }
 
+    /**
+     * Import the specified resource from storage.
+     *
+     * @param  \App\Models\Zone  $zone
+     * @return \Illuminate\Http\Response
+     */
     public function import(Request $request)
     {
-        $file = $request->file('file');
-        Excel::import(new CityImport, $file);
-        return back()->with('message', 'Importacion correcta');
+        
     }
+
 }

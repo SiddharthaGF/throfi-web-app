@@ -13,17 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('parishes', function (Blueprint $table) {
-            $table->string('code_city', 4);
-            $table->string('code_parish', 6)->primary();
+        Schema::create('states', function (Blueprint $table) {
+            $table->string('code', 2)->primary();
             $table->string('name');
             $table->timestamps();
         });
-
-        Schema::table('parishes', function (Blueprint $table) {
-            $table->foreign('code_city')->references('code_city')->on('cities');
-        });
-        
     }
 
     /**
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parishes');
+        Schema::dropIfExists('states');
     }
 };

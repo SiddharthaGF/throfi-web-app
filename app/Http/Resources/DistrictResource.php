@@ -2,9 +2,11 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Controllers\Api\v1\DPA\ZoneController;
+use App\Models\Zone;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PatientResource extends JsonResource
+class DistrictResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,12 +17,10 @@ class PatientResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'full_name' => $this->last_name.' '.$this->name,
-            'birthdate' => $this->birthdate,
-            'district' => $this->district,
-            'profile_photo' => $this->profile_photo,
-            'url' =>  route('patient.show', $this->id),
+            'code_district' => $this->code_district,
+            'name' => $this->name,
+            'url_district' => route('district.show', $this->code_district),
+            'zonees' => Zone::CodeDistrict($this->code_district)->get(),
         ];
     }
 }

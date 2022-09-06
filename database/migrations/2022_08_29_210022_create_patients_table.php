@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('last_name',50);
             $table->string('ocupation', 100);
             $table->date('birthdate');
-            $table->string('city',100);
+            $table->string('district',100);
             $table->string('nutritional_diagnosis',150);
             $table->string('type_of_surgery', 50)->nullable();
             $table->string('profile_photo');

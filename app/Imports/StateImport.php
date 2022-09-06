@@ -2,10 +2,10 @@
 
 namespace App\Imports;
 
-use App\Models\City;
+use App\Models\State;
 use Maatwebsite\Excel\Concerns\ToModel;
 
-class CityImport implements ToModel
+class StateImport implements ToModel
 {
     /**
     * @param array $row
@@ -14,10 +14,9 @@ class CityImport implements ToModel
     */
     public function model(array $row)
     {
-        return new City([            
-            'code_province' => $row[0],
-            'code_city' => $row[1],
-            'name' => $row[2]
+        return new State([
+            'code' => $row[0],
+            'name' => $row[1],
         ]);
     }
 }
